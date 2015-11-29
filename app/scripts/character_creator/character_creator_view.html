@@ -1,49 +1,12 @@
-<div>
-	<form action="submit">
-		<div>
-			<input type="text" placeholder="first name">
-			<input type="text" placeholder="last name">
-		</div>
-		<!-- races -->
-		<div class="radio">
-			<label for="">
-				<input type="radio" name="optionsRace"> human
-			</label>
-			<label for="">
-				<input type="radio" name="optionsRace"> elf
-			</label>
-			<label for="">
-				<input type="radio" name="optionsRace"> gnome
-			</label>
-			<label for="">
-				<input type="radio" name="optionsRace"> dwarf
-			</label>
-		</div>
-		<!-- end races -->
-		<!-- classes -->
-		<!-- <ul class="radio">
-			<li>
-				<label for="">
-					<input type="radio" name="optionsClass">Paladin
-				</label>	
-			</li>
-			<li>
-				<label for="">
-					<input type="radio" name="optionsClass">Bard
-				</label>
-			</li>
-			<li>
-				<label for="">
-					<input type="radio" name="optionsClass">Fighter
-				</label>
-			</li>
-			<li>
-				<label for="">
-					<input type="radio" name="optionsClass">Cleric
-				</label>
-			</li>
-		</ul> -->
-		<!-- end classes -->
-
-	</form>
-</div>
+	<button ng-click="creator.getRollsSet()">generate set</button>
+	<br>
+	<ul>
+		<li ng-repeat="x in creator.standardSet"><button value="{{creator.standardSet.indexOf(x)}}" >{{x}}</button></li>
+	</ul>
+	
+	
+	<button ng-click="creator.rollAllStats()">roll all stats</button>
+	<button ng-click="creator.reroll('strength', 3,1,6)">reroll strength</button>
+	<button ng-click="creator.reroll('wisdom', 3,1,6)">reroll wisdom</button>
+	<button ng-click="creator.reroll('charisma', 3,1,6)">reroll charisma</button>
+	<button ng-click="creator.reroll('dexterity', 3,1,6)">reroll dexterity</button>

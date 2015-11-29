@@ -1,8 +1,8 @@
 (function(){
 	angular.module('RPG', ['ngRoute', 'ngCookies', 'firebase'])
-		.constant('fb', {
-			url: "https://luminous-torch-5681.firebaseio.com"
-		})
+		// .constant('fb', {
+		// 	url: "https://luminous-torch-5681.firebaseio.com"
+		// })
 		.config(function($routeProvider, $locationProvider) {
 
 			$routeProvider.when('/', {
