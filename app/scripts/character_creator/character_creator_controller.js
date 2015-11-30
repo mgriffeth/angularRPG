@@ -4,22 +4,10 @@
 			function($scope, $location, $http, $cookieStore) {
 				console.log("Hey there! Come on and create some characters.");
 
-				var races = [{
-					name: 'human'
-				}, {
-					name: "elf"
-				}, {
-					name: "dwarf"
-				}];
+				var races = [];
 				$scope.races = races;
 
-				var charClasses = [{
-					name: "figher"
-				}, {
-					name: "cleric"
-				}, {
-					name: "wizard"
-				}];
+				var charClasses = [];
 				$scope.charClasses = charClasses;
 
 
@@ -27,7 +15,8 @@
 					inProgChar: {},
 					rollsLeft: 0,
 					rollsSet: [],
-					standardSet: [15,14,13,12,10,8],
+					// standardSet: [15, 14, 13, 12, 10, 8],
+					standardSet: [1, 4, 3, 2, 10, 8],
 					statModels: {
 						d20: ["strength", "intellect", "charisma", "dexterity", "constitution", "wisdom"]
 					},
@@ -45,17 +34,17 @@
 						return total;
 					},
 					reroll: function(skill, numberRolls, min, max) {
-						if (this.rollsLeft > 0 ) {
+						if (this.rollsLeft > 0) {
 							var newStat = this.multiRoll(numberRolls, min, max)
 							this.inProgChar.skills[skill] = newStat;
 							this.rollsLeft -= 1;
 							console.log(this.rollsLeft + " rolls left..");
 							console.log(this.inProgChar);
-						}else{
+						} else {
 							console.error("No rerolls left...");
 						}
 					},
-					getRollsSet:function(){
+					getRollsSet: function() {
 						this.rollsSet = [];
 						var model = this.statModels.d20;
 						for (var i = 0; i < model.length; i++) {
@@ -71,10 +60,23 @@
 							this.inProgChar.skills[model[i]] = this.multiRoll(3, 1, 6)
 						}
 						console.log(this.inProgChar);
+					},
+					rollAgain: function(index) {
+						// console.log(index);
+						var origValue = this.standardSet[index];
+						var newRoll = this.multiRoll(3, 1, 6);
+						// this.standardSet.splice(index, 1, newRoll);
+						// console.log('new value: ' + newRoll);
+						if (origValue < newRoll) {
+							console.log('original value: ' + origValue)
+							console.log('new value: ' + newRoll);
+							// this.standardSet[index] = newRoll;
+							this.standardSet.splice(index, 1, newRoll);
+							// this.standardSet.push(newRoll);
+							// console.log(this.standardSet);
+						}
 					}
 				}
-
-
 			}
 		]);
 }())

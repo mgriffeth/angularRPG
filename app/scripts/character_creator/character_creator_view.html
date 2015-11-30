@@ -1,7 +1,7 @@
 	<button ng-click="creator.getRollsSet()">generate set</button>
 	<br>
 	<ul>
-		<li ng-repeat="x in creator.standardSet"><button value="{{creator.standardSet.indexOf(x)}}" >{{x}}</button></li>
+		<li ng-repeat="x in creator.standardSet track by $index"><button ng-click="creator.rollAgain(creator.standardSet.indexOf(x))" >{{x}}</button></li>
 	</ul>
 	
 	
